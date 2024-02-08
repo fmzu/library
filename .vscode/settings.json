@@ -1,0 +1,41 @@
+{
+  "cSpell.words": [],
+  "editor.codeActionsOnSave": {
+    "source.organizeImports.biome": "always"
+  },
+  "editor.defaultFormatter": "biomejs.biome",
+  "editor.formatOnSave": true,
+  "files.associations": {
+    "*.svg": "html",
+    "*.xml": "html",
+    "*.css": "tailwindcss"
+  },
+  "files.exclude": {
+    "**/node_modules": true,
+    "*.log": true,
+    "*.tsbuildinfo": true,
+    ".firebase": true,
+    ".idea": true,
+    ".next": true,
+    "next-env.d.ts": true,
+    "package-lock.json": true
+  },
+  "search.exclude": {
+    "*.lock": true,
+    "package-lock.json": true,
+    "public": true
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.preferences.autoImportFileExcludePatterns": [
+    "@emotion",
+    "@radix-ui",
+    "next/dist",
+    "postcss",
+    "process",
+    "react-day-picker",
+    "tailwind-merge",
+    "tailwindcss",
+    "vitest/dist"
+  ],
+  "typescript.preferences.importModuleSpecifier": "non-relative"
+}
