@@ -1,8 +1,5 @@
 import { ProductCard } from "@/app/_components/product-card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { SearchIcon } from "lucide-react"
+import { SearchBox } from "@/app/_components/search-box"
 
 export default function Home() {
   return (
@@ -17,22 +14,7 @@ export default function Home() {
           }
         </p>
       </div>
-      <header className="flex  w-full items-center">
-        <form className="flex w-full md:max-w-xs">
-          <Label className="sr-only" htmlFor="search">
-            {"Search"}
-          </Label>
-          <Input
-            className="flex-1 w-full md:w-[300px] text-sm"
-            id="search"
-            placeholder="Search"
-          />
-          <Button className="ml-2 md:ml-4" size="icon" type="submit">
-            <SearchIcon className="h-4 w-4" />
-            <span className="sr-only">{"Search"}</span>
-          </Button>
-        </form>
-      </header>
+      <SearchBox />
       <div className="grid gap-4">
         <ProductCard />
         <ProductCard />
