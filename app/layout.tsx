@@ -1,5 +1,7 @@
+import { ThemeProvider } from "@/app/_components/theme-provider"
 import "./globals.css"
 
+import { RootHeader } from "@/app/_components/root-header"
 import { cn } from "@/lib/utils"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
@@ -17,14 +19,17 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
           fontSans.variable,
         )}
       >
-        {children}
+        <ThemeProvider>
+          <RootHeader />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )
