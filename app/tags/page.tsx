@@ -25,7 +25,7 @@ export default async function Home() {
       </div>
       <div className="flex flex-col space-y-2">
         {tags.map((tag) => (
-          <Link key={tag.id} href={`/tags/${tag.name}`}>
+          <Link key={tag.id} href={`/tags/${tag.slug}`}>
             <TagCard
               key={tag.id}
               tagName={tag.name}
