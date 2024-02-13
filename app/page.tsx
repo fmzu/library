@@ -1,5 +1,6 @@
 import { ProductCard } from "@/app/_components/product-card"
 import { SearchBox } from "@/app/_components/search-box"
+import { Button } from "@/components/ui/button"
 import { database } from "@/lib/database"
 import Link from "next/link"
 
@@ -15,16 +16,19 @@ export default async function Home() {
   return (
     <main className="p-4 space-y-4">
       <div className="space-y-4">
-        <h1 className="text-3xl font-bold tracking-tight">
-          {"React Libraries"}
+        <h1 className="flex text-3xl font-bold tracking-tight">
+          <span>{"Libraries"}</span>
         </h1>
         <p className="text-gray-500 dark:text-gray-400">
-          {
-            "コミュニティによって厳選された最高の React ライブラリとパッケージを見つけてください。"
-          }
+          {"自分のスタイルに合わせていろいろなライブラリが探せます。"}
         </p>
       </div>
-      <SearchBox />
+      <div className="flex justify-between">
+        <SearchBox />
+        <Link href={"/tags"}>
+          <Button>{"tags"}</Button>
+        </Link>
+      </div>
       <div className="grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
         {repositories.map((repository) => (
           <Link
