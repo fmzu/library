@@ -1,3 +1,4 @@
+import { Badge } from "@/components/ui/badge"
 import { database } from "@/lib/database"
 
 type Props = {
@@ -5,6 +6,7 @@ type Props = {
     owner: string
     repository: string
   }
+  include: { tags: true }
 }
 
 export default async function Home(props: Props) {
@@ -26,6 +28,11 @@ export default async function Home(props: Props) {
         <h1 className="text-3xl font-bold tracking-tight">
           {repository?.name}
         </h1>
+        <div className="space-x-1">
+          {repository?.tags.map((tag) => (
+            <Badge key={tag.id}>{tag.name}</Badge>
+          ))}
+        </div>
         <p className="text-gray-500 dark:text-gray-400">
           {repository?.description}
         </p>

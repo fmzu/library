@@ -47,7 +47,7 @@ export const ProductCard = (props: Props) => {
       </CardContent>
       <CardFooter>
         <Link href={`/${props.ownerLogin}/${props.name}`}>
-          <Button>View</Button>
+          <Button>{"View"}</Button>
         </Link>
       </CardFooter>
     </Card>
