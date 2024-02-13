@@ -1,5 +1,6 @@
-import { Badge } from "@/components/ui/badge"
+import { TagBadge } from "@/app/_components/tag-badge"
 import { database } from "@/lib/database"
+import Link from "next/link"
 
 type Props = {
   params: {
@@ -30,7 +31,9 @@ export default async function Home(props: Props) {
         </h1>
         <div className="space-x-1">
           {repository?.tags.map((tag) => (
-            <Badge key={tag.id}>{tag.name}</Badge>
+            <Link key={tag.id} href={`/tags/${tag.slug}`}>
+              <TagBadge key={tag.id} tagName={tag.name} />
+            </Link>
           ))}
         </div>
         <p className="text-gray-500 dark:text-gray-400">

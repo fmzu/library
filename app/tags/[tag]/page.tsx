@@ -1,4 +1,7 @@
+import { Button } from "@/components/ui/button"
 import { database } from "@/lib/database"
+import { ArrowLeft } from "lucide-react"
+import Link from "next/link"
 
 type Props = {
   params: {
@@ -23,6 +26,14 @@ export default async function Home(props: Props) {
             "コミュニティによって厳選された最高の React ライブラリとパッケージを見つけてください。"
           }
         </p>
+      </div>
+      <div className="flex">
+        <Link href={"/tags"}>
+          <Button className="flex items-center">
+            <ArrowLeft className="mr-2 w-4" />
+            {"tags"}
+          </Button>
+        </Link>
       </div>
     </main>
   )

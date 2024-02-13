@@ -10,16 +10,18 @@ generator client {
 
 model repositories {
   id                     Int            @id @default(autoincrement())
-  node_id                String         @unique
+  node_id                String?        @unique
   name                   String
   owner_login            String         @map("owner_login")
   description            String?
+  homepage_url           String?
   networks_count         Int
   subscribers_count      Int
   watchers_count         Int
   open_issues_count      Int
   stargazers_count       Int
   forks_count            Int
+  open_graph_image_url   String?
   tags                   tags[]
   related_tags           tags[]         @relation("tag_repositories")
   previous_repository    repositories?  @relation("related_repositories", fields: [previous_repository_id], references: [id])
@@ -27,6 +29,7 @@ model repositories {
   next_repositories      repositories[] @relation("related_repositories")
   is_pinned              Boolean        @default(false)
   is_deleted             Boolean        @default(false)
+  pushed_at              DateTime       @default(now())
   created_at             DateTime       @default(now())
   updated_at             DateTime       @default(now())
   crawled_at             DateTime       @default(now())
@@ -37,6 +40,7 @@ model repositories {
 
 model tags {
   id            Int            @id @default(autoincrement())
+  node_id       String?        @unique
   name          String
   slug          String         @unique
   is_topic      Boolean
