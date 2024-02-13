@@ -20,5 +20,16 @@ export default async function Home(props: Props) {
   })
   console.log(repository)
 
-  return null
+  return (
+    <main className="p-4 space-y-4">
+      <div className="space-y-4">
+        <h1 className="text-3xl font-bold tracking-tight">
+          {repository?.name}
+        </h1>
+        <p className="text-gray-500 dark:text-gray-400">
+          {repository?.description}
+        </p>
+      </div>
+    </main>
+  )
 }
