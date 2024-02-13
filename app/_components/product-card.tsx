@@ -5,23 +5,29 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { Star } from "lucide-react"
 
-export const ProductCard = () => {
+type Props = {
+  name: string
+  description: string
+  starCount: number
+  createdAt: string
+}
+
+export const ProductCard = (props: Props) => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-base">{"@dnd-kit/utilities"}</CardTitle>
-        <CardDescription>
-          {
-            "Utilities for building beautiful, accessible, and resilient drag and drop interfaces with React."
-          }
-        </CardDescription>
+        <CardTitle className="text-base">{props.name}</CardTitle>
+        <CardDescription>{props.description}</CardDescription>
       </CardHeader>
-      <CardContent className="p-4 grid gap-2">
-        <div className="inline-flex h-6 items-center gap-2 text-xs font-medium">
-          <span>{"drag-and-drop"}</span>
-          <span>{"utilities"}</span>
-          <span>{"resilient"}</span>
+      <CardContent className="flex space-x-2 items-center">
+        <div className="flex space-x-2">
+          <Star />
+          <p>{props.starCount}</p>
+        </div>
+        <div className="flex space-x-2">
+          <p>{props.createdAt}</p>
         </div>
       </CardContent>
     </Card>

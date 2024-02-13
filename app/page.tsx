@@ -1,7 +1,11 @@
 import { ProductCard } from "@/app/_components/product-card"
 import { SearchBox } from "@/app/_components/search-box"
+import { database } from "@/lib/database"
 
-export default function Home() {
+export default async function Home() {
+  const repositories = await database.repositories.findMany({ take: 64 })
+  console.log(repositories)
+
   return (
     <main className="p-4 space-y-4">
       <div className="space-y-4">
@@ -16,11 +20,14 @@ export default function Home() {
       </div>
       <SearchBox />
       <div className="grid gap-4">
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        {repositories.map((repository) => (
+          <ProductCard
+            name={repository.name}
+            description={repository.description || ""}
+            starCount={repository.stargazers_count}
+            createdAt={repository.updated_at.toLocaleDateString()}
+          />
+        ))}
       </div>
     </main>
   )

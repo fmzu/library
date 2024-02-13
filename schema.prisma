@@ -1,0 +1,55 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_URL")
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch"]
+}
+
+model repositories {
+  id                     Int            @id @default(autoincrement())
+  node_id                String         @unique
+  name                   String
+  owner_login            String         @map("owner_login")
+  description            String?
+  networks_count         Int
+  subscribers_count      Int
+  watchers_count         Int
+  open_issues_count      Int
+  stargazers_count       Int
+  forks_count            Int
+  tags                   tags[]
+  related_tags           tags[]         @relation("tag_repositories")
+  previous_repository    repositories?  @relation("related_repositories", fields: [previous_repository_id], references: [id])
+  previous_repository_id Int?
+  next_repositories      repositories[] @relation("related_repositories")
+  is_pinned              Boolean        @default(false)
+  is_deleted             Boolean        @default(false)
+  created_at             DateTime       @default(now())
+  updated_at             DateTime       @default(now())
+  crawled_at             DateTime       @default(now())
+
+  @@unique([name, owner_login])
+  @@map("repositories")
+}
+
+model tags {
+  id            Int            @id @default(autoincrement())
+  name          String
+  slug          String         @unique
+  is_topic      Boolean
+  repositories  repositories[]
+  previous_tags tags[]         @relation("related_tags")
+  next_tags     tags[]         @relation("related_tags")
+  repository    repositories?  @relation("tag_repositories", fields: [repository_id], references: [id])
+  repository_id Int?
+  is_pinned     Boolean        @default(false)
+  is_deleted    Boolean        @default(false)
+  created_at    DateTime       @default(now())
+  updated_at    DateTime       @default(now())
+  crawled_at    DateTime       @default(now())
+
+  @@map("tags")
+}
