@@ -38,7 +38,7 @@ export default async function Home() {
               description={repository.description || ""}
               starCount={repository.stargazers_count}
               createdAt={repository.updated_at.toLocaleDateString()}
-              tagNames={repository.tags.map((tag) => tag.name)}
+              tagNames={repository.tags.map((tag) => tag.slug)}
               ownerLogin={repository.owner_login}
             />
           </Link>

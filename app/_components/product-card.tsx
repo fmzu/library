@@ -1,4 +1,4 @@
-import { Badge } from "@/components/ui/badge"
+import { TagBadge } from "@/app/_components/tag-badge"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -41,7 +41,9 @@ export const ProductCard = (props: Props) => {
         </div>
         <div className="flex flex-wrap gap-1">
           {tagNames.map((tagName) => (
-            <Badge key={tagName}>{tagName}</Badge>
+            <Link key={tagName} href={`/tags/${tagName}`}>
+              <TagBadge tagName={tagName} />
+            </Link>
           ))}
         </div>
       </CardContent>
