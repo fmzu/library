@@ -35,21 +35,16 @@ export default async function Home() {
       </div>
       <div className="grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
         {repositories.map((repository) => (
-          <Link
-            target="_blank"
-            rel="noopener noreferrer"
+          <ProductCard
             key={repository.id}
-            href={`https://github.com/${repository.owner_login}/${repository.name}`}
-          >
-            <ProductCard
-              name={repository.name}
-              description={repository.description || ""}
-              starCount={repository.stargazers_count}
-              createdAt={repository.updated_at.toLocaleDateString()}
-              tagNames={repository.tags.map((tag) => tag.slug)}
-              ownerLogin={repository.owner_login}
-            />
-          </Link>
+            name={repository.name}
+            description={repository.description || ""}
+            starCount={repository.stargazers_count}
+            createdAt={repository.updated_at.toLocaleDateString()}
+            tagNames={repository.tags.map((tag) => tag.slug)}
+            ownerLogin={repository.owner_login}
+            imageUrl={repository.open_graph_image_url}
+          />
         ))}
       </div>
     </main>
