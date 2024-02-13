@@ -1,3 +1,4 @@
+import { Badge } from "@/components/ui/badge"
 import {
   Card,
   CardContent,
@@ -12,6 +13,7 @@ type Props = {
   description: string
   starCount: number
   createdAt: string
+  tagNames: string[]
 }
 
 export const ProductCard = (props: Props) => {
@@ -21,13 +23,20 @@ export const ProductCard = (props: Props) => {
         <CardTitle className="text-base">{props.name}</CardTitle>
         <CardDescription>{props.description}</CardDescription>
       </CardHeader>
-      <CardContent className="flex space-x-2 items-center">
-        <div className="flex space-x-2">
-          <Star />
-          <p>{props.starCount}</p>
+      <CardContent className="space-y-2">
+        <div className="flex flex-wrap gap-1">
+          {props.tagNames.map((tagName) => (
+            <Badge key={tagName}>{tagName}</Badge>
+          ))}
         </div>
-        <div className="flex space-x-2">
-          <p>{props.createdAt}</p>
+        <div className="flex space-x-2 ">
+          <div className="flex space-x-2 items-center">
+            <Star />
+            <p>{props.starCount}</p>
+          </div>
+          <div className="flex space-x-2">
+            <p>{props.createdAt}</p>
+          </div>
         </div>
       </CardContent>
     </Card>
