@@ -27,7 +27,6 @@ export const ProductCard = (props: Props) => {
     <Card>
       <CardHeader>
         <CardTitle className="text-base">{`${props.ownerLogin}/${props.name}`}</CardTitle>
-
         <CardDescription>{props.description}</CardDescription>
       </CardHeader>
       <CardContent className="space-y-2">

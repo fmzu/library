@@ -1,5 +1,6 @@
 import { TagCard } from "@/app/_components/tag-card"
 import { database } from "@/lib/database"
+import Link from "next/link"
 
 export default async function Home() {
   const tags = await database.tags.findMany({
@@ -22,13 +23,17 @@ export default async function Home() {
           }
         </p>
       </div>
-      {tags.map((tag) => (
-        <TagCard
-          key={tag.id}
-          tagName={tag.name}
-          nextTagNames={tag.next_tags.map((tag) => tag.slug)}
-        />
-      ))}
+      <div className="flex flex-col space-y-2">
+        {tags.map((tag) => (
+          <Link key={tag.id} href={`/tags/${tag.name}`}>
+            <TagCard
+              key={tag.id}
+              tagName={tag.name}
+              nextTagNames={tag.next_tags.map((tag) => tag.slug)}
+            />
+          </Link>
+        ))}
+      </div>
     </main>
   )
 }
