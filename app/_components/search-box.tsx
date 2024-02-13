@@ -11,7 +11,7 @@ export const SearchBox = () => {
         placeholder="Search"
       />
       <Button className="ml-2 md:ml-4" size="icon" type="submit">
-        <SearchIcon className="h-4 w-4" />
+        <SearchIcon className="w-4" />
         <span className="sr-only">{"Search"}</span>
       </Button>
     </form>

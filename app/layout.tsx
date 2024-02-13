@@ -1,6 +1,7 @@
 import { ThemeProvider } from "@/app/_components/theme-provider"
 import "./globals.css"
 
+import { RootFooter } from "@/app/_components/root-footer"
 import { RootHeader } from "@/app/_components/root-header"
 import { cn } from "@/lib/utils"
 import type { Metadata } from "next"
@@ -29,6 +30,7 @@ export default function RootLayout({
         <ThemeProvider>
           <RootHeader />
           {children}
+          <RootFooter />
         </ThemeProvider>
       </body>
     </html>

@@ -2,6 +2,7 @@ import { ProductCard } from "@/app/_components/product-card"
 import { SearchBox } from "@/app/_components/search-box"
 import { Button } from "@/components/ui/button"
 import { database } from "@/lib/database"
+import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 
 export default async function Home() {
@@ -26,7 +27,10 @@ export default async function Home() {
       <div className="flex justify-between">
         <SearchBox />
         <Link href={"/tags"}>
-          <Button>{"tags"}</Button>
+          <Button className="flex items-center">
+            {"tags"}
+            <ArrowRight className="ml-2 w-4" />
+          </Button>
         </Link>
       </div>
       <div className="grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
