@@ -13,6 +13,7 @@ export const SearchBox = () => {
 
   const onSearch = () => {
     router.push(`/search/${search}`)
+    setSearch("")
   }
 
   return (
@@ -24,10 +25,15 @@ export const SearchBox = () => {
           setSearch(e.target.value)
         }}
         value={search}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            onSearch()
+          }
+        }}
       />
       <Button size="icon" onClick={onSearch}>
         <SearchIcon className="w-4" />
-        <span className="sr-only">{"Search"}</span>
+        <span className="sr-only">{"検索"}</span>
       </Button>
     </div>
   )
