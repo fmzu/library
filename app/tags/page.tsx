@@ -1,4 +1,3 @@
-import { SearchBox } from "@/app/_components/search-box"
 import { TagCard } from "@/app/_components/tag-card"
 import { database } from "@/lib/database"
 import Link from "next/link"
@@ -22,7 +21,6 @@ export default async function Home() {
           }
         </p>
       </div>
-      <SearchBox />
       <div className="flex flex-col space-y-2">
         {tags.map((tag) => (
           <Link key={tag.id} href={`/tags/${tag.slug}`}>

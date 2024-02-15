@@ -1,5 +1,4 @@
 import { ProductCard } from "@/app/_components/product-card"
-import { SearchBox } from "@/app/_components/search-box"
 import { database } from "@/lib/database"
 
 export default async function Home() {
@@ -20,9 +19,6 @@ export default async function Home() {
         <p className="text-gray-500 dark:text-gray-400">
           {"自分のスタイルに合わせていろいろなライブラリが探せます。"}
         </p>
-      </div>
-      <div className="flex justify-between">
-        <SearchBox />
       </div>
       <div className="grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
         {repositories.map((repository) => (

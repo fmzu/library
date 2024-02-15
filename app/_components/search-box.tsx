@@ -16,7 +16,7 @@ export const SearchBox = () => {
   }
 
   return (
-    <div className="flex w-full md:max-w-xs space-x-2">
+    <div className="flex w-full space-x-2">
       <Input
         className="flex-1 w-full md:w-40"
         placeholder="Search"
