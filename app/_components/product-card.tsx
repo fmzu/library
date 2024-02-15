@@ -33,8 +33,10 @@ export const ProductCard = (props: Props) => {
       />
       <CardHeader>
         <div className="flex flex-col">
-          <CardTitle className="text-base">{`${props.ownerLogin}/${props.name}`}</CardTitle>
-          <CardDescription>{props.description}</CardDescription>
+          <CardTitle className="text-base text-nowrap overflow-hidden text-ellipsis">{`${props.ownerLogin}/${props.name}`}</CardTitle>
+          <CardDescription className="whitespace-break-spaces">
+            {props.description.padEnd(120, " ")}
+          </CardDescription>
         </div>
       </CardHeader>
       <CardContent className="space-y-2">
@@ -75,7 +77,7 @@ export const ProductCard = (props: Props) => {
           </Link>
         )}
         <Link href={`/${props.ownerLogin}/${props.name}`}>
-          <Button variant={"secondary"}>{"View"}</Button>
+          <Button variant={"secondary"}>{"詳細"}</Button>
         </Link>
       </CardFooter>
     </Card>
