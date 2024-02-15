@@ -1,19 +1,34 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { SearchIcon } from "lucide-react"
+import { useRouter } from "next/navigation"
+import { useState } from "react"
 
 export const SearchBox = () => {
+  const router = useRouter()
+
+  const [search, setSearch] = useState("")
+
+  const onSearch = () => {
+    router.push(`/search/${search}`)
+  }
+
   return (
-    <form className="flex w-full md:max-w-xs">
+    <div className="flex w-full md:max-w-xs space-x-2">
       <Input
-        className="flex-1 w-full md:w-[300px] text-sm"
-        id="search"
+        className="flex-1 w-full md:w-40"
         placeholder="Search"
+        onChange={(e) => {
+          setSearch(e.target.value)
+        }}
+        value={search}
       />
-      <Button className="ml-2 md:ml-4" size="icon" type="submit">
+      <Button size="icon" onClick={onSearch}>
         <SearchIcon className="w-4" />
         <span className="sr-only">{"Search"}</span>
       </Button>
-    </form>
+    </div>
   )
 }
