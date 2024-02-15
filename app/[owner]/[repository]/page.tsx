@@ -32,7 +32,7 @@ export default async function Home(props: Props) {
         <div className="space-x-1">
           {repository?.tags.map((tag) => (
             <Link key={tag.id} href={`/tags/${tag.slug}`}>
-              <TagBadge key={tag.id} tagName={tag.name} />
+              <TagBadge key={tag.id} children={tag.name} />
             </Link>
           ))}
         </div>

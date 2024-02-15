@@ -5,7 +5,7 @@ import Link from "next/link"
 
 export default async function Home() {
   const tags = await database.tags.findMany({
-    take: 64,
+    take: 128,
     include: {
       repository: true,
       next_tags: true,
@@ -30,6 +30,7 @@ export default async function Home() {
               key={tag.id}
               tagName={tag.name}
               nextTagNames={tag.next_tags.map((tag) => tag.slug)}
+              tagSlug={tag.slug}
             />
           </Link>
         ))}

@@ -1,9 +1,9 @@
 import { Badge } from "@/components/ui/badge"
 
 type Props = {
-  tagName: string
+  children: string
 }
 
 export const TagBadge = (props: Props) => {
-  return <Badge>{props.tagName}</Badge>
+  return <Badge>{props.children}</Badge>
 }

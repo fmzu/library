@@ -1,33 +1,46 @@
 import { ProductCard } from "@/app/_components/product-card"
-import { TagBadge } from "@/app/_components/tag-badge"
 import { database } from "@/lib/database"
-import Link from "next/link"
 import { notFound } from "next/navigation"
 
 type Props = {
   params: {
     tag: string
+    second: string
   }
 }
 
 export default async function Home(props: Props) {
-  const tag = await database.tags.findUnique({
+  const parentTag = await database.tags.findUnique({
     where: {
       slug: props.params.tag,
     },
+  })
+
+  const tag = await database.tags.findUnique({
+    where: {
+      slug: props.params.second,
+    },
     include: {
-      repository: true,
       repositories: {
+        where: {
+          tags: {
+            some: {
+              slug: props.params.tag,
+            },
+          },
+        },
         take: 128,
         include: {
           tags: true,
         },
+        orderBy: {
+          stargazers_count: "desc",
+        },
       },
-      next_tags: true,
     },
   })
 
-  if (!tag) {
+  if (parentTag === null || tag === null) {
     notFound()
   }
 
@@ -45,22 +58,17 @@ export default async function Home(props: Props) {
   return (
     <main className="p-4 space-y-4">
       <div className="space-y-4">
-        <h1 className="text-3xl font-bold tracking-tight">{tag?.name}</h1>
+        <h1 className="text-3xl font-bold tracking-tight">
+          {parentTag?.name}
+          {" / "}
+          {tag?.name}
+        </h1>
         <p className="text-gray-500 dark:text-gray-400">
           {
             "コミュニティによって厳選された最高の React ライブラリとパッケージを見つけてください。"
           }
         </p>
       </div>
-      {tag.next_tags.length > 0 && (
-        <div className="flex flex-wrap gap-2">
-          {tag.next_tags.map((nextTag) => (
-            <Link href={`/tags/${tag.slug}/${nextTag.slug}`} key={nextTag.slug}>
-              <TagBadge key={nextTag.id}>{nextTag.name}</TagBadge>
-            </Link>
-          ))}
-        </div>
-      )}
       <div className="grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
         {tag.repositories.map((repository) => (
           <ProductCard

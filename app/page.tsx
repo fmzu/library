@@ -7,7 +7,7 @@ export default async function Home() {
     where: {
       is_deleted: false,
     },
-    take: 64,
+    take: 128,
     include: { tags: true },
   })
 
@@ -35,6 +35,7 @@ export default async function Home() {
             tagNames={repository.tags.map((tag) => tag.slug)}
             ownerLogin={repository.owner_login}
             imageUrl={repository.open_graph_image_url}
+            homepageUrl={repository.homepage_url}
           />
         ))}
       </div>

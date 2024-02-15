@@ -18,6 +18,7 @@ type Props = {
   tagNames: string[]
   ownerLogin: string
   imageUrl: string | null
+  homepageUrl: string | null
 }
 
 export const ProductCard = (props: Props) => {
@@ -49,7 +50,7 @@ export const ProductCard = (props: Props) => {
         <div className="flex flex-wrap gap-1">
           {tagNames.map((tagName) => (
             <Link key={tagName} href={`/tags/${tagName}`}>
-              <TagBadge tagName={tagName} />
+              <TagBadge>{tagName}</TagBadge>
             </Link>
           ))}
         </div>
@@ -63,6 +64,16 @@ export const ProductCard = (props: Props) => {
         >
           <Button className="w-full">{"GitHub"}</Button>
         </Link>
+        {props.homepageUrl && (
+          <Link
+            className="flex-1"
+            target="_blank"
+            rel="noopener noreferrer"
+            href={props.homepageUrl}
+          >
+            <Button className="w-full">{"Webサイト"}</Button>
+          </Link>
+        )}
         <Link href={`/${props.ownerLogin}/${props.name}`}>
           <Button variant={"secondary"}>{"View"}</Button>
         </Link>
