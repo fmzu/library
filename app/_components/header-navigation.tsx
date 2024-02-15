@@ -7,18 +7,18 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
-import Link from "next/link"
 
 export const HeaderNavigation = () => {
   return (
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <Link href={"/tags"}>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              {"Tags"}
-            </NavigationMenuLink>
-          </Link>
+          <NavigationMenuLink
+            href={"/tags"}
+            className={navigationMenuTriggerStyle()}
+          >
+            {"Tags"}
+          </NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
