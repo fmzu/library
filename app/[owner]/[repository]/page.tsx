@@ -7,7 +7,6 @@ type Props = {
     owner: string
     repository: string
   }
-  include: { tags: true }
 }
 
 export default async function Home(props: Props) {
@@ -18,10 +17,8 @@ export default async function Home(props: Props) {
         name: props.params.repository,
       },
     },
-
     include: { tags: true },
   })
-  console.log(repository)
 
   return (
     <main className="p-4 space-y-4">
@@ -32,7 +29,7 @@ export default async function Home(props: Props) {
         <div className="space-x-1">
           {repository?.tags.map((tag) => (
             <Link key={tag.id} href={`/tags/${tag.slug}`}>
-              <TagBadge key={tag.id} children={tag.name} />
+              <TagBadge key={tag.id}>{tag.name}</TagBadge>
             </Link>
           ))}
         </div>
