@@ -24,6 +24,8 @@ type Props = {
 export const ProductCard = (props: Props) => {
   const tagNames = props.tagNames.slice(0, 3)
 
+  const remainingTags = Math.max(0, props.tagNames.length - 3)
+
   return (
     <Card>
       <img
@@ -34,8 +36,8 @@ export const ProductCard = (props: Props) => {
       <CardHeader>
         <div className="flex flex-col">
           <CardTitle className="text-base text-nowrap overflow-hidden text-ellipsis">{`${props.ownerLogin}/${props.name}`}</CardTitle>
-          <CardDescription className="whitespace-break-spaces">
-            {props.description.padEnd(120, " ")}
+          <CardDescription className="whitespace-break-spaces md:h-[60px] overflow-hidden">
+            {props.description}
           </CardDescription>
         </div>
       </CardHeader>
@@ -55,6 +57,11 @@ export const ProductCard = (props: Props) => {
               <TagBadge>{tagName}</TagBadge>
             </Link>
           ))}
+          {remainingTags > 0 && (
+            <div>
+              <TagBadge>{`+${remainingTags}`}</TagBadge>
+            </div>
+          )}
         </div>
       </CardContent>
       <CardFooter className="space-x-2">
