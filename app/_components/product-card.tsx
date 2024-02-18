@@ -1,4 +1,5 @@
 import { TagBadge } from "@/app/_components/tag-badge"
+import { formatNumber } from "@/app/_utils/format-number"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -35,14 +36,12 @@ export const ProductCard = (props: Props) => {
         alt={props.name}
       />
       <CardHeader>
-        <div className="flex flex-col">
-          <CardTitle className="text-base text-nowrap overflow-hidden text-ellipsis">{`${props.ownerLogin}/${props.name}`}</CardTitle>
-          <CardDescription className="whitespace-break-spaces md:h-[60px] overflow-hidden">
-            {props.description}
-          </CardDescription>
-        </div>
+        <CardTitle className="text-nowrap overflow-hidden text-ellipsis">{`${props.ownerLogin}/${props.name}`}</CardTitle>
+        <CardDescription className="whitespace-break-spaces md:h-[60px] overflow-hidden">
+          {props.description}
+        </CardDescription>
       </CardHeader>
-      <CardContent className="space-y-2">
+      <CardContent className="space-y-2 pb-2">
         {/* <div className="flex space-x-2 items-center">
           <div className="flex space-x-0 items-center">
             <Star className="mr-2 w-4" />
@@ -65,10 +64,10 @@ export const ProductCard = (props: Props) => {
           )}
         </div>
         <div className="flex justify-between items-center">
-          <span>{`最終更新日:${props.updatedAt}`}</span>
-          <div className="flex space-x-2 items-center">
-            <Star />
-            <span>{props.starCount}</span>
+          <span className="text-sm">{`最終更新日:${props.updatedAt}`}</span>
+          <div className="flex items-center">
+            <Star className="mr-2 w-4" />
+            <span className="text-sm">{formatNumber(props.starCount)}</span>
           </div>
         </div>
       </CardContent>

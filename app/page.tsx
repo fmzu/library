@@ -8,6 +8,7 @@ export default async function Home() {
     },
     take: 128,
     include: { tags: true },
+    orderBy: { stargazers_count: "desc" },
   })
 
   return (

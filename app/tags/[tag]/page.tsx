@@ -51,7 +51,8 @@ export default async function Home(props: Props) {
         </p>
       </div>
       {tag.next_tags.length > 0 && (
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 items-center">
+          <span>{"関連タグ:"}</span>
           {tag.next_tags.map((nextTag) => (
             <Link href={`/tags/${tag.slug}/${nextTag.slug}`} key={nextTag.slug}>
               <TagBadge key={nextTag.id}>{nextTag.name}</TagBadge>
