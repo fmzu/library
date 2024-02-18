@@ -34,7 +34,7 @@ model repositories {
   pushed_at                   DateTime     @default(now())
   created_at                  DateTime     @default(now())
   updated_at                  DateTime     @default(now())
-  crawled_at                  DateTime     @default(now())
+  crawled_at                  DateTime?    @default(now())
 
   @@unique([name, owner_login])
 }
@@ -57,7 +57,7 @@ model tags {
   is_deleted       Boolean        @default(false)
   created_at       DateTime       @default(now())
   updated_at       DateTime       @default(now())
-  crawled_at       DateTime       @default(now())
+  crawled_at       DateTime?      @default(now())
 }
 
 model categories {

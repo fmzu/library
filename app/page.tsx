@@ -27,7 +27,7 @@ export default async function Home() {
             name={repository.name}
             description={repository.description || ""}
             starCount={repository.stargazers_count}
-            createdAt={repository.updated_at.toLocaleDateString()}
+            updatedAt={repository.updated_at.toLocaleDateString()}
             tagNames={repository.tags.map((tag) => tag.slug)}
             ownerLogin={repository.owner_login}
             imageUrl={repository.open_graph_image_url}

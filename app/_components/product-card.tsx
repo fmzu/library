@@ -8,13 +8,14 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { Star } from "lucide-react"
 import Link from "next/link"
 
 type Props = {
   name: string
   description: string
   starCount: number
-  createdAt: string
+  updatedAt: string
   tagNames: string[]
   ownerLogin: string
   imageUrl: string | null
@@ -62,6 +63,13 @@ export const ProductCard = (props: Props) => {
               <TagBadge>{`+${remainingTags}`}</TagBadge>
             </div>
           )}
+        </div>
+        <div className="flex justify-between items-center">
+          <span>{`最終更新日:${props.updatedAt}`}</span>
+          <div className="flex space-x-2 items-center">
+            <Star />
+            <span>{props.starCount}</span>
+          </div>
         </div>
       </CardContent>
       <CardFooter className="space-x-2">

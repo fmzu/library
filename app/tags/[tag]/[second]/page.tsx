@@ -63,11 +63,6 @@ export default async function Home(props: Props) {
           {" / "}
           {tag?.name}
         </h1>
-        <p className="text-gray-500 dark:text-gray-400">
-          {
-            "コミュニティによって厳選された最高の React ライブラリとパッケージを見つけてください。"
-          }
-        </p>
       </div>
       <div className="grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
         {tag.repositories.map((repository) => (
@@ -76,7 +71,7 @@ export default async function Home(props: Props) {
             name={repository.name}
             description={repository.description || ""}
             starCount={repository.stargazers_count}
-            createdAt={repository.updated_at.toLocaleDateString()}
+            updatedAt={repository.updated_at.toLocaleDateString()}
             tagNames={repository.tags.map((tag) => tag.slug)}
             ownerLogin={repository.owner_login}
             imageUrl={repository.open_graph_image_url}
