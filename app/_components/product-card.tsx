@@ -1,4 +1,5 @@
 import { TagBadge } from "@/app/_components/tag-badge"
+import { daysAgo } from "@/app/_utils/days-ago"
 import { formatNumber } from "@/app/_utils/format-number"
 import { Button } from "@/components/ui/button"
 import {
@@ -9,6 +10,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { cn } from "@/lib/utils"
+import { differenceInYears } from "date-fns"
 import { Star } from "lucide-react"
 import Link from "next/link"
 
@@ -28,16 +31,33 @@ export const ProductCard = (props: Props) => {
 
   const remainingTags = Math.max(0, props.tagNames.length - 3)
 
+  const updatedAtDate = new Date(props.updatedAt)
+
+  const isUpdatedMoreThanOneYearsAgo =
+    differenceInYears(new Date(), updatedAtDate) >= 1
+
   return (
-    <Card>
+    <Card
+      className={cn({
+        "bg-gray-300 dark:bg-card": isUpdatedMoreThanOneYearsAgo,
+      })}
+    >
       <img
         className="w-full h-64 object-cover"
         src={props.imageUrl || "https://via.placeholder.com/300"}
         alt={props.name}
       />
       <CardHeader>
-        <CardTitle className="text-nowrap overflow-hidden text-ellipsis">{`${props.ownerLogin}/${props.name}`}</CardTitle>
-        <CardDescription className="whitespace-break-spaces md:h-[60px] overflow-hidden">
+        <CardTitle
+          className={cn("text-nowrap overflow-hidden text-ellipsis", {
+            "dark:text-gray-500": isUpdatedMoreThanOneYearsAgo,
+          })}
+        >{`${props.ownerLogin}/${props.name}`}</CardTitle>
+        <CardDescription
+          className={cn("whitespace-break-spaces md:h-[60px] overflow-hidden", {
+            "dark:text-gray-500": isUpdatedMoreThanOneYearsAgo,
+          })}
+        >
           {props.description}
         </CardDescription>
       </CardHeader>
@@ -64,7 +84,9 @@ export const ProductCard = (props: Props) => {
           )}
         </div>
         <div className="flex justify-between items-center">
-          <span className="text-sm">{`最終更新日:${props.updatedAt}`}</span>
+          <span className="text-sm">{`最終更新日:${daysAgo(
+            new Date(props.updatedAt),
+          )}`}</span>
           <div className="flex items-center">
             <Star className="mr-2 w-4" />
             <span className="text-sm">{formatNumber(props.starCount)}</span>
