@@ -27,8 +27,6 @@ model repositories {
   latest_release_description  String?
   latest_release_published_at DateTime?
   tag_names                   String[]
-  tags                        tags[]
-  related_tags                tags[]       @relation("tag_repositories")
   categories                  categories[]
   is_pinned                   Boolean      @default(false)
   is_deleted                  Boolean      @default(false)
@@ -40,33 +38,11 @@ model repositories {
   @@unique([name, owner_login])
 }
 
-model tags {
-  id               Int            @id @default(autoincrement())
-  node_id          String?        @unique
-  name             String
-  description      String?
-  body             String?
-  slug             String         @unique
-  repositories     repositories[]
-  previous_tags    tags[]         @relation("related_tags")
-  next_tags        tags[]         @relation("related_tags")
-  repository       repositories?  @relation("tag_repositories", fields: [repository_id], references: [id])
-  repository_id    Int?
-  categories       categories[]
-  stargazers_count Int?
-  is_pinned        Boolean        @default(false)
-  is_deleted       Boolean        @default(false)
-  created_at       DateTime       @default(now())
-  updated_at       DateTime       @default(now())
-  crawled_at       DateTime?      @default(now())
-}
-
 model categories {
   id           Int            @id @default(autoincrement())
   nanoid       String         @unique
   name         String
   slug         String         @unique
-  tags         tags[]
   repositories repositories[]
   is_pinned    Boolean        @default(false)
   is_deleted   Boolean        @default(false)
