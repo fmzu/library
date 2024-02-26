@@ -27,9 +27,11 @@ type Props = {
 }
 
 export const ProductCard = (props: Props) => {
-  const tagNames = props.tagNames.slice(0, 3)
+  const a = 5
 
-  const remainingTags = Math.max(0, props.tagNames.length - 3)
+  const tagNames = props.tagNames.slice(0, a)
+
+  const remainingTags = Math.max(0, props.tagNames.length - a)
 
   const updatedAtDate = new Date(props.updatedAt)
 
@@ -42,11 +44,11 @@ export const ProductCard = (props: Props) => {
         "bg-gray-300 dark:bg-card": isUpdatedMoreThanOneYearsAgo,
       })}
     >
-      <img
+      {/* <img
         className="w-full h-64 object-cover"
         src={props.imageUrl || "https://via.placeholder.com/300"}
         alt={props.name}
-      />
+      /> */}
       <CardHeader>
         <CardTitle
           className={cn("text-nowrap overflow-hidden text-ellipsis", {
@@ -84,9 +86,9 @@ export const ProductCard = (props: Props) => {
           )}
         </div>
         <div className="flex justify-between items-center">
-          <span className="text-sm">{`最終更新日:${daysAgo(
-            new Date(props.updatedAt),
-          )}`}</span>
+          <span className="text-sm">
+            {`最終更新日:${daysAgo(new Date(props.updatedAt))}`}
+          </span>
           <div className="flex items-center">
             <Star className="mr-2 w-4" />
             <span className="text-sm">{formatNumber(props.starCount)}</span>

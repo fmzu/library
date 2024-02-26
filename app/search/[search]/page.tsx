@@ -31,7 +31,7 @@ export default async function Home(props: Props) {
         },
       ],
     },
-    include: { tags: true },
+    // include: { tags: true },
     take: 128,
   })
 
@@ -53,7 +53,7 @@ export default async function Home(props: Props) {
             description={repository.description || ""}
             starCount={repository.stargazers_count}
             updatedAt={repository.updated_at.toLocaleDateString()}
-            tagNames={repository.tags.map((tag) => tag.slug)}
+            tagNames={repository.tag_names}
             ownerLogin={repository.owner_login}
             imageUrl={repository.open_graph_image_url}
             homepageUrl={repository.homepage_url}

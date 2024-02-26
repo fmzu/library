@@ -17,7 +17,7 @@ export default async function Home(props: Props) {
         name: props.params.repository,
       },
     },
-    include: { tags: true },
+    // include: { tags: true },
   })
 
   return (
@@ -27,9 +27,9 @@ export default async function Home(props: Props) {
           {repository?.name}
         </h1>
         <div className="space-x-1">
-          {repository?.tags.map((tag) => (
-            <Link key={tag.id} href={`/tags/${tag.slug}`}>
-              <TagBadge key={tag.id}>{tag.name}</TagBadge>
+          {repository?.tag_names.map((tag) => (
+            <Link key={tag} href={`/tags/${tag}`}>
+              <TagBadge>{tag}</TagBadge>
             </Link>
           ))}
         </div>

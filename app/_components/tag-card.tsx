@@ -14,16 +14,18 @@ export const TagCard = (props: Props) => {
       <CardHeader>
         <CardTitle className="text-base">{props.tagName}</CardTitle>
       </CardHeader>
-      <CardContent className="space-y-2">
-        <div className="flex flex-wrap gap-2 items-center">
-          <span>{"関連タグ:"}</span>
-          {props.nextTagNames.map((tagName) => (
-            <Link href={`/tags/${tagName}`} key={tagName}>
-              <TagBadge>{tagName}</TagBadge>
-            </Link>
-          ))}
-        </div>
-      </CardContent>
+      {props.nextTagNames && props.nextTagNames.length > 0 && (
+        <CardContent className="space-y-2">
+          <div className="flex flex-wrap gap-2 items-center">
+            <span>{"関連タグ:"}</span>
+            {props.nextTagNames.map((tagName) => (
+              <Link href={`/tags/${tagName}`} key={tagName}>
+                <TagBadge>{tagName}</TagBadge>
+              </Link>
+            ))}
+          </div>
+        </CardContent>
+      )}
     </Card>
   )
 }

@@ -3,9 +3,7 @@
 import {
   NavigationMenu,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 
 export const HeaderNavigation = () => {
@@ -13,12 +11,12 @@ export const HeaderNavigation = () => {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuLink
+          {/* <NavigationMenuLink
             href={"/tags"}
             className={navigationMenuTriggerStyle()}
           >
             {"Tags"}
-          </NavigationMenuLink>
+          </NavigationMenuLink> */}
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>

@@ -26,6 +26,7 @@ model repositories {
   latest_release_name         String?
   latest_release_description  String?
   latest_release_published_at DateTime?
+  tag_names                   String[]
   tags                        tags[]
   related_tags                tags[]       @relation("tag_repositories")
   categories                  categories[]
