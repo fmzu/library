@@ -31,7 +31,7 @@ export const SearchBox = () => {
           }
         }}
       />
-      <Button size="icon" onClick={onSearch}>
+      <Button size="icon" onClick={onSearch} variant={"secondary"}>
         <SearchIcon className="w-4" />
         <span className="sr-only">{"検索"}</span>
       </Button>

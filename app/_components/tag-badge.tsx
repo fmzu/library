@@ -5,5 +5,5 @@ type Props = {
 }
 
 export const TagBadge = (props: Props) => {
-  return <Badge>{props.children}</Badge>
+  return <Badge variant={"secondary"}>{props.children}</Badge>
 }

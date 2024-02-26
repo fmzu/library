@@ -111,7 +111,9 @@ export const ProductCard = (props: Props) => {
             rel="noopener noreferrer"
             href={props.homepageUrl}
           >
-            <Button className="w-full">{"Webサイト"}</Button>
+            <Button className="w-full" variant={"secondary"}>
+              {"Webサイト"}
+            </Button>
           </Link>
         )}
         <Link href={`/${props.ownerLogin}/${props.name}`}>

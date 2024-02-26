@@ -83,7 +83,9 @@ export default async function Home(props: Props) {
             rel="noopener noreferrer"
             href={repository?.homepage_url}
           >
-            <Button className="w-full">{"Webサイト"}</Button>
+            <Button className="w-full" variant={"secondary"}>
+              {"Webサイト"}
+            </Button>
           </Link>
         )}
       </div>
