@@ -39,8 +39,8 @@ export default async function Home(props: Props) {
   })
 
   return (
-    <main className="p-4 space-y-4">
-      <img src={repository?.open_graph_image_url!} alt="" />
+    <main className="space-y-4 container">
+      <img className="w-full" src={repository?.open_graph_image_url!} alt="" />
       <div className="space-y-4">
         <h1 className="text-3xl font-bold tracking-tight">
           {repository?.name}

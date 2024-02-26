@@ -1,24 +1,20 @@
 "use client"
 
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuList,
-} from "@/components/ui/navigation-menu"
+import { NavigationMenu } from "@/components/ui/navigation-menu"
 
 export const HeaderNavigation = () => {
   return (
-    <NavigationMenu>
-      <NavigationMenuList>
+    <NavigationMenu className="container">
+      {/* <NavigationMenuList>
         <NavigationMenuItem>
-          {/* <NavigationMenuLink
+          <NavigationMenuLink
             href={"/tags"}
             className={navigationMenuTriggerStyle()}
           >
             {"Tags"}
-          </NavigationMenuLink> */}
+          </NavigationMenuLink>
         </NavigationMenuItem>
-      </NavigationMenuList>
+      </NavigationMenuList> */}
     </NavigationMenu>
   )
 }
