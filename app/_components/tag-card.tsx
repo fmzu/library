@@ -17,7 +17,6 @@ export const TagCard = (props: Props) => {
       {props.nextTagNames && props.nextTagNames.length > 0 && (
         <CardContent className="space-y-2">
           <div className="flex flex-wrap gap-2 items-center">
-            <span>{"関連タグ:"}</span>
             {props.nextTagNames.map((tagName) => (
               <Link href={`/tags/${tagName}`} key={tagName}>
                 <TagBadge>{tagName}</TagBadge>
