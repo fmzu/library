@@ -7,10 +7,10 @@ import Link from "next/link"
 export const RootHeader = () => {
   return (
     <header className="flex py-4 items-center space-x-2 container">
-      <div className="flex space-x-2 items-center">
+      <div className="flex space-x-1 items-center">
         <Button asChild variant="ghost" size="icon">
           <Link href="/">
-            <Home className="h-8 w-8" />
+            <Home className="h-6 w-6" />
           </Link>
         </Button>
         <span>{"/"}</span>
