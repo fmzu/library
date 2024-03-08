@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
 import { differenceInYears } from "date-fns"
-import { Star } from "lucide-react"
+import { CalendarCheck2, Star } from "lucide-react"
 import Link from "next/link"
 
 type Props = {
@@ -27,7 +27,7 @@ type Props = {
 }
 
 export const ProductCard = (props: Props) => {
-  const a = 5
+  const a = 16
 
   const tagNames = props.tagNames.slice(0, a)
 
@@ -49,21 +49,35 @@ export const ProductCard = (props: Props) => {
         src={props.imageUrl || "https://via.placeholder.com/300"}
         alt={props.name}
       /> */}
-      <CardHeader>
+      <CardHeader className="pb-2">
         <CardTitle
-          className={cn("text-nowrap overflow-hidden text-ellipsis", {
+          className={cn("break-all overflow-hidden text-ellipsis", {
             "dark:text-gray-500": isUpdatedMoreThanOneYearsAgo,
           })}
-        >{`${props.ownerLogin}/${props.name}`}</CardTitle>
+        >
+          <span className="flex justify-between flex-col md:flex-row">
+            <span>{`${props.ownerLogin}/${props.name}`}</span>
+            <div className="flex items-center space-x-2">
+              <span className="flex text-base items-center font-normal">
+                <CalendarCheck2 className="mr-2 w-4" />
+                {daysAgo(new Date(props.updatedAt))}
+              </span>
+              <span className="flex text-base items-center">
+                <Star className="mr-2 w-4 fill-yellow-500" />
+                {formatNumber(props.starCount)}
+              </span>
+            </div>
+          </span>
+        </CardTitle>
         <CardDescription
-          className={cn("whitespace-break-spaces md:h-[60px] overflow-hidden", {
+          className={cn("whitespace-break-spaces overflow-hidden", {
             "dark:text-gray-500": isUpdatedMoreThanOneYearsAgo,
           })}
         >
           {props.description}
         </CardDescription>
       </CardHeader>
-      <CardContent className="space-y-2 pb-2">
+      <CardContent className="space-y-2 pb-4 pt-0">
         {/* <div className="flex space-x-2 items-center">
           <div className="flex space-x-0 items-center">
             <Star className="mr-2 w-4" />
@@ -85,7 +99,7 @@ export const ProductCard = (props: Props) => {
             </div>
           )}
         </div>
-        <div className="flex justify-between items-center">
+        {/* <div className="flex justify-between items-center">
           <span className="text-sm">
             {`最終更新日:${daysAgo(new Date(props.updatedAt))}`}
           </span>
@@ -93,7 +107,7 @@ export const ProductCard = (props: Props) => {
             <Star className="mr-2 w-4" />
             <span className="text-sm">{formatNumber(props.starCount)}</span>
           </div>
-        </div>
+        </div> */}
       </CardContent>
       <CardFooter className="space-x-2">
         <Link
@@ -102,7 +116,9 @@ export const ProductCard = (props: Props) => {
           rel="noopener noreferrer"
           href={`https://github.com/${props.ownerLogin}/${props.name}`}
         >
-          <Button className="w-full">{"GitHub"}</Button>
+          <Button className="w-full" variant={"secondary"} size={"sm"}>
+            {"GitHub"}
+          </Button>
         </Link>
         {props.homepageUrl && (
           <Link
@@ -111,13 +127,15 @@ export const ProductCard = (props: Props) => {
             rel="noopener noreferrer"
             href={props.homepageUrl}
           >
-            <Button className="w-full" variant={"secondary"}>
+            <Button className="w-full" variant={"secondary"} size={"sm"}>
               {"Webサイト"}
             </Button>
           </Link>
         )}
         <Link href={`/${props.ownerLogin}/${props.name}`}>
-          <Button variant={"secondary"}>{"詳細"}</Button>
+          <Button variant={"secondary"} size={"sm"}>
+            {"詳細"}
+          </Button>
         </Link>
       </CardFooter>
     </Card>

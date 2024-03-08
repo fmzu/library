@@ -19,7 +19,7 @@ export default async function Home() {
   const famousTagNames = toFamousTagNames(allTagNames)
 
   return (
-    <main className="p-6 space-y-4">
+    <main className="space-y-4 container">
       {/* <div className="space-y-4">
         <h1 className="flex text-3xl font-bold tracking-tight">
           <span>{"Libraries"}</span>
@@ -35,7 +35,7 @@ export default async function Home() {
           </Link>
         ))}
       </div>
-      <div className="grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+      <div className="grid gap-4">
         {repositories.map((repository) => (
           <ProductCard
             key={repository.id}
