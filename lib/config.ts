@@ -16,4 +16,11 @@ export const config = new Map([
     ],
   ],
   ["vue", ["ui", "admin"]],
+  ["angular", ["ui", "admin"]],
+  ["nodejs", ["bun", "deno"]],
+  ["bun", ["nodejs", "deno"]],
+  ["deno", ["nodejs", "bun"]],
+  ["nextjs", ["react", "ui", "admin"]],
+  ["svelte", ["ui", "admin"]],
+  ["solidjs", ["ui", "admin"]],
 ])

@@ -1,6 +1,8 @@
 import { ProductCard } from "@/app/_components/product-card"
 import { TagBadge } from "@/app/_components/tag-badge"
 import { toFamousTagNames } from "@/app/_utils/to-famous-tag-names"
+import { Separator } from "@/components/ui/separator"
+import { config } from "@/lib/config"
 import { database } from "@/lib/database"
 import Link from "next/link"
 
@@ -18,8 +20,20 @@ export default async function Home() {
 
   const famousTagNames = toFamousTagNames(allTagNames)
 
+  const hotTags = Array.from(config.keys())
+
   return (
     <main className="space-y-4 container">
+      <div className="space-y-4">
+        <div className="flex flex-wrap gap-2 items-center">
+          {hotTags.map((tagName) => (
+            <Link href={`/tags/${tagName}`} key={tagName}>
+              <TagBadge>{tagName}</TagBadge>
+            </Link>
+          ))}
+        </div>
+      </div>
+      <Separator />
       <div className="flex flex-wrap gap-2 items-center">
         {famousTagNames.map((tagName) => (
           <Link href={`/tags/${tagName}`} key={tagName}>
