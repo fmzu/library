@@ -12,8 +12,10 @@ export const SearchBox = () => {
   const [search, setSearch] = useState("")
 
   const onSearch = () => {
-    router.push(`/search/${search}`)
-    setSearch("")
+    if (search.trim() !== "") {
+      router.push(`/search/${search}`)
+      setSearch("")
+    }
   }
 
   return (
