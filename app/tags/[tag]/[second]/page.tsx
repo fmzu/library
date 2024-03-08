@@ -34,7 +34,7 @@ export default async function Home(props: Props) {
   // })
 
   return (
-    <main className="p-4 space-y-4">
+    <main className="space-y-4 container">
       <div className="space-y-4">
         <h1 className="text-3xl font-bold tracking-tight">
           {props.params.tag}

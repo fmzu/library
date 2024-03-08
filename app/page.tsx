@@ -20,14 +20,6 @@ export default async function Home() {
 
   return (
     <main className="space-y-4 container">
-      {/* <div className="space-y-4">
-        <h1 className="flex text-3xl font-bold tracking-tight">
-          <span>{"Libraries"}</span>
-        </h1>
-        <p className="text-gray-500 dark:text-gray-400">
-          {"自分のスタイルに合わせていろいろなライブラリが探せます。"}
-        </p>
-      </div> */}
       <div className="flex flex-wrap gap-2 items-center">
         {famousTagNames.map((tagName) => (
           <Link href={`/tags/${tagName}`} key={tagName}>

@@ -1,6 +1,8 @@
 import { ProductCard } from "@/app/_components/product-card"
 import { TagBadge } from "@/app/_components/tag-badge"
 import { toFamousTagNames } from "@/app/_utils/to-famous-tag-names"
+import { Separator } from "@/components/ui/separator"
+import { config } from "@/lib/config"
 import { database } from "@/lib/database"
 import Link from "next/link"
 
@@ -16,9 +18,6 @@ export default async function Home(props: Props) {
       tag_names: { has: props.params.tag },
     },
     take: 128,
-    // include: {
-    //   tags: true,
-    // },
     orderBy: {
       stargazers_count: "desc",
     },
@@ -30,23 +29,24 @@ export default async function Home(props: Props) {
 
   const famousTagNames = toFamousTagNames(allTagNames, 32)
 
-  // const repositories = await database.repositories.findMany({
-  //   where: {
-  //     is_deleted: false,
-  //     tags: {
-  //       some: {
-  //         slug: props.params.tag,
-  //       },
-  //     },
-  //   },
-  // })
-
+  const relatedTags = config.get(props.params.tag)
+  console.log(relatedTags)
   return (
-    <main className="p-4 space-y-4">
+    <main className="space-y-4 container">
       <div className="space-y-4">
         <h1 className="text-3xl font-bold tracking-tight">
           {props.params.tag}
         </h1>
+        {relatedTags && relatedTags.length > 0 && (
+          <div className="flex flex-wrap gap-2 items-center">
+            {relatedTags.map((tagName) => (
+              <Link href={`/tags/${props.params.tag}/${tagName}`} key={tagName}>
+                <TagBadge>{`+ ${tagName}`}</TagBadge>
+              </Link>
+            ))}
+          </div>
+        )}
+        {relatedTags && relatedTags.length > 0 && <Separator />}
       </div>
       <div className="flex flex-wrap gap-2 items-center">
         {famousTagNames.map((tagName) => (

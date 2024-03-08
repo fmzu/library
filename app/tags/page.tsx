@@ -36,7 +36,7 @@ export default async function Home() {
   console.log(tags)
 
   return (
-    <main className="p-6 space-y-4">
+    <main className="space-y-4 container">
       {/* <div className="space-y-4">
         <h1 className="text-3xl font-bold tracking-tight">{"Tags"}</h1>
         <p className="text-gray-500 dark:text-gray-400">
