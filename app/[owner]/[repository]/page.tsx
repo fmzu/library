@@ -45,7 +45,7 @@ export default async function Home(props: Props) {
         <h1 className="text-3xl font-bold tracking-tight">
           {repository?.name}
         </h1>
-        <div className="space-x-1">
+        <div className="flex flex-wrap gap-2 items-center">
           {repository?.tag_names.map((tag) => (
             <Link key={tag} href={`/tags/${tag}`}>
               <TagBadge>{tag}</TagBadge>
@@ -90,7 +90,7 @@ export default async function Home(props: Props) {
         )}
       </div>
       <Separator />
-      <div className="grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+      <div className="grid gap-4">
         {relatedRepositories.map((repository) => (
           <ProductCard
             key={repository.id}

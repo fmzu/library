@@ -42,7 +42,7 @@ export default async function Home(props: Props) {
           {props.params.second}
         </h1>
       </div>
-      <div className="grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+      <div className="grid gap-4">
         {repositories.map((repository) => (
           <ProductCard
             key={repository.id}
