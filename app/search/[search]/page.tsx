@@ -1,9 +1,13 @@
 import { ProductCard } from "@/app/_components/product-card"
+import { TagBadge } from "@/app/_components/tag-badge"
+import { toFamousTagNames } from "@/app/_utils/to-famous-tag-names"
 import { database } from "@/lib/database"
+import Link from "next/link"
 
 type Props = {
   params: {
     search: string
+    tag: string
   }
 }
 
@@ -23,10 +27,8 @@ export default async function Home(props: Props) {
           },
         },
         {
-          tags: {
-            some: {
-              slug: props.params.search,
-            },
+          tag_names: {
+            has: props.params.search,
           },
         },
       ],
@@ -35,15 +37,25 @@ export default async function Home(props: Props) {
     take: 128,
   })
 
+  const allTagNames = repositories
+    .flatMap((repository) => repository.tag_names)
+    .filter((tagName) => tagName !== props.params.tag)
+
+  const famousTagNames = toFamousTagNames(allTagNames, 32)
+
   return (
     <main className="p-4 space-y-4">
       <div className="space-y-4">
         <h1 className="flex text-3xl font-bold tracking-tight">
           <span>{props.params.search}</span>
         </h1>
-        <p className="text-gray-500 dark:text-gray-400">
-          {"自分のスタイルに合わせていろいろなライブラリが探せます。"}
-        </p>
+      </div>
+      <div className="flex flex-wrap gap-2 items-center">
+        {famousTagNames.map((tagName) => (
+          <Link href={`/tags/${tagName}`} key={tagName}>
+            <TagBadge>{tagName}</TagBadge>
+          </Link>
+        ))}
       </div>
       <div className="grid gap-4">
         {repositories.map((repository) => (
