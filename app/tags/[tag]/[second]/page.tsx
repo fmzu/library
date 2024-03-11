@@ -14,9 +14,6 @@ export default async function Home(props: Props) {
       tag_names: { hasEvery: [props.params.tag, props.params.second] },
     },
     take: 128,
-    // include: {
-    //   tags: true,
-    // },
     orderBy: {
       stargazers_count: "desc",
     },

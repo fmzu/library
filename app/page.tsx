@@ -12,7 +12,6 @@ export default async function Home() {
       is_deleted: false,
     },
     take: 128,
-    // include: { tags: true },
     orderBy: { stargazers_count: "desc" },
   })
 

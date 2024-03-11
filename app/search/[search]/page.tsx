@@ -33,7 +33,6 @@ export default async function Home(props: Props) {
         },
       ],
     },
-    // include: { tags: true },
     take: 128,
   })
 

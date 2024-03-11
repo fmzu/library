@@ -23,7 +23,6 @@ export default async function Home(props: Props) {
         name: props.params.repository,
       },
     },
-    // include: { tags: true },
   })
 
   const relatedRepositories = await database.repositories.findMany({
